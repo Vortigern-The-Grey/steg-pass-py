@@ -16,3 +16,7 @@ result_image = "test-secret"
 encrypt(test_seed, test_message, test_image)
 output_message = decrypt(result_image, test_seed)
 print(f"{output_message} decrypted from {result_image}.png")
+if output_message == test_message:
+    print("Output and input confirmed match")
+else:
+    print("Output and input do not match!!!")
