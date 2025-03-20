@@ -3,6 +3,10 @@ from steganon import Image, LSB_WS
 
 
 def encrypt(seed, message, cover):
+    """
+    Takes a seed (string), a message (string), and file name of png (string), and encrypts the message in the image using the string.
+    It then writes this to a file named {cover}-secret.png
+    """
     cover_image = Image.open(f"{cover}.png")  # Open targeted Image
     seed = bytes(seed, "utf-8")
     lsb_ws = LSB_WS(
@@ -15,6 +19,9 @@ def encrypt(seed, message, cover):
 
 
 def decrypt(image, seed):
+    """
+    Opens a png file and uses a supplied seed to extract the hidden message.
+    """
     target_image = Image.open(f"{image}.png")  # Open Image with hidden data
     lsb_ws = LSB_WS(
         target_image, seed
